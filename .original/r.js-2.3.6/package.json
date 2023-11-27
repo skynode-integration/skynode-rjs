@@ -1,5 +1,9 @@
 {
     "volo": {
         "url": "https://raw.github.com/requirejs/r.js/{version}/dist/r.js"
+    },
+    "dependencies": {
+        "coffee-script": "^1.12.7",
+        "uglify-js": "^3.17.4"
     }
 }

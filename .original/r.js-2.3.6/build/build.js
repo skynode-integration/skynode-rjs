@@ -17,6 +17,7 @@ require({
 },       ['env!env/args', 'env!env/quit', 'logger', 'build'],
 function (args, quit, logger, build) {
     build(args).then(function () {}, function (err) {
+        console.error(err);
         logger.error(err);
         quit(1);
     });
