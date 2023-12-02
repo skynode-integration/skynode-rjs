@@ -1,7 +1,7 @@
 /*jslint sloppy: true, plusplus: true */
 /*global define, java, Packages, com */
 
-define(['logger', 'env!env/file'], function (logger, file) {
+define(['skylark-rjs/logger', './file'], function (logger, file) {
 
     //Add .reduce to Rhino so UglifyJS can run in Rhino,
     //inspired by https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce

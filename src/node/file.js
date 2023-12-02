@@ -1,7 +1,7 @@
 /*jslint plusplus: false, octal:false, strict: false */
 /*global define: false, process: false */
 
-define(['fs', 'path', 'prim'], function (fs, path, prim) {
+define(['fs', 'path', 'skylark-rjs/prim'], function (fs, path, prim) {
 
     var isWindows = process.platform === 'win32',
         windowsDriveRegExp = /^[a-zA-Z]\:\/$/,

@@ -3,7 +3,7 @@
 /*jslint plusplus: false */
 /*global java: false, define: false */
 
-define(['prim'], function (prim) {
+define(['skylark-rjs/prim'], function (prim) {
     var file = {
         backSlashRegExp: /\\/g,
 

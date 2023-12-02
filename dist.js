@@ -25,28 +25,13 @@ var fs = require('fs'),
     //since it is loaded separately.
     libFiles = [
         'src/env.js',
-        'src/lang.js',
-        'src/prim.js',
         'env!env/assert',
         'env!env/args',
         'env!env/load',
         'env!env/file',
         'env!env/quit',
         'env!env/print',
-        'src/logger.js',
-        'src/blank.js',
-        'src/esprima.js',
-        'src/esprimaAdapter.js',
-        'src/source-map.js',
-        'src/uglifyjs.js',
-        'src/parse.js',
-        'src/transform.js',
-        'src/pragma.js',
-        'env!env/optimize',
-        'src/optimize.js',
-        'src/requirePatch.js',
-        'src/commonJs.js',
-        'src/build.js'
+        'src/skylark-rjs-all.js'
     ],
     optimizerStartFile = 'build/build.js',
     libText = '';
@@ -57,9 +42,14 @@ function readAndNameModule(fileName) {
         moduleName = (match && match[1]) || fileName;
 
     //Insert the module name.
-    return contents.replace(defRegExp, function (match) {
-        return match + "'" + moduleName + "', ";
-    });
+    if (moduleName.indexOf("skylark")==-1) {
+        return contents.replace(defRegExp, function (match) {
+            return match + "'" + moduleName + "', ";
+        });        
+    } else {
+        return contents;
+    }
+
 }
 
 //Load up all the optimizer files.

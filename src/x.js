@@ -313,7 +313,7 @@ var requirejs, require, define, xpcUtil;
 
             //Create the function that will be called once build modules
             //have been loaded.
-            var runBuild = function (build, logger, quit) {
+            var runBuild = function (build, logger, assert,args,load,file,quit,print) {
                 //Make sure config has a log level, and if not,
                 //make it "silent" by default.
                 config.logLevel = config.hasOwnProperty('logLevel') ?
@@ -352,12 +352,31 @@ var requirejs, require, define, xpcUtil;
                     quit(1);
                 };
 
+                config.env = {
+                    assert,
+                    args,
+                    load,
+                    "fs" : file,
+                    quit,
+                    print
+
+                };
+
                 build(config).then(done, done).then(callback, errback);
             };
 
             requirejs({
                 context: 'build'
-            }, ['build', 'logger', 'env!env/quit'], runBuild);
+            }, [
+              'skylark-rjs/build', 
+              'skylark-rjs/logger',
+                'env!env/assert',
+                'env!env/args',
+                'env!env/load',
+                'env!env/file',
+                'env!env/quit',
+                'env!env/print'
+            ], runBuild);
         };
 
         requirejs.tools = {
@@ -376,7 +395,7 @@ var requirejs, require, define, xpcUtil;
                     context: contextName
                 });
 
-                req(['build'], function () {
+                req(['skylark-rjs/build'], function () {
                     callback(req);
                 });
             }
@@ -423,7 +442,7 @@ var requirejs, require, define, xpcUtil;
     } else if (commandOption === 'convert') {
         loadLib();
 
-        this.requirejsVars.require(['env!env/args', 'commonJs', 'env!env/print'],
+        this.requirejsVars.require(['env!env/args', 'skylark-rjs/commonJs', 'env!env/print'],
             function (args, commonJs, print) {
 
                 var srcDir, outDir;

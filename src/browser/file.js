@@ -1,7 +1,7 @@
 /*jslint sloppy: true, nomen: true */
 /*global require, define, console, XMLHttpRequest, requirejs, location */
 
-define(['prim'], function (prim) {
+define(['skylark-rjs/prim'], function (prim) {
 
     var file,
         currDirRegExp = /^\.(\/|$)/;

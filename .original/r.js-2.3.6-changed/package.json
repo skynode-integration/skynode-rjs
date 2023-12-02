@@ -1,0 +1,35 @@
+{
+  "name": "skynode-rjs",
+  "description": "A version of r.js  that ported to running on skylarkjs.",
+  "version": "0.9.0",
+  "keywords": [
+    "skylark",
+    "tool",
+    "r.js"
+  ],
+  "homepage": "https://github.com/skylarknode/skynode-rjs/",
+  "author": "Hudaokeji, Inc.",
+  "scripts": {
+    "build": "sbundle build ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skylarknode/skynode-rjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skylark-integration/skynode-rjs/issues"
+  },
+  "files": [
+    "dist/"
+  ],  
+  "license": "MIT",
+  "devDependencies": {
+    "skylark-langx": "git+https://github.com/skylark-langx/skylark-langx.git#master",
+    "skylark-esprima": "git+https://github.com/skylark-integration/skylark-esprima.git#master"
+  },
+  "main": "./dist/r.js",
+
+  "engines": {
+    "node": ">=0.10.1"
+  }
+}
