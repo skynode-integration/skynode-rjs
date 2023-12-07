@@ -401,6 +401,21 @@ var requirejs, require, define, xpcUtil;
             }
         };
 
+        requirejs.minify = function(fileMap,options, callback) {
+            if (!loadedOptimizedLib) {
+                loadLib();
+                loadedOptimizedLib = true;
+            }
+
+            requirejs({
+                context: 'build'
+            }, ['skylark-rjs/uglifyjs'], function (uglifyjs) {
+                var mangled = uglifyjs.minify(fileMap,options);
+                callback(mangled);
+            });
+
+        };
+
         requirejs.define = define;
     }
 
