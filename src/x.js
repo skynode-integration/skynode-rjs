@@ -313,7 +313,7 @@ var requirejs, require, define, xpcUtil;
 
             //Create the function that will be called once build modules
             //have been loaded.
-            var runBuild = function (build, logger, assert,args,load,file,quit,print) {
+            var runBuild = function (build, requirePatch,logger, assert,args,load,file,quit,print) {
                 //Make sure config has a log level, and if not,
                 //make it "silent" by default.
                 config.logLevel = config.hasOwnProperty('logLevel') ?
@@ -361,7 +361,7 @@ var requirejs, require, define, xpcUtil;
                     print
 
                 };
-
+                requirePatch(require,config);
                 build(config).then(done, done).then(callback, errback);
             };
 
@@ -369,6 +369,7 @@ var requirejs, require, define, xpcUtil;
                 context: 'build'
             }, [
               'skylark-rjs/build', 
+              'skylark-rjs/requirePatch',
               'skylark-rjs/logger',
                 'env!env/assert',
                 'env!env/args',
