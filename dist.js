@@ -31,7 +31,8 @@ var fs = require('fs'),
         'env!env/file',
         'env!env/quit',
         'env!env/print',
-        'src/skylark-rjs-all.js'
+        'src/skylark-rjs-all.js',
+        'src/requirePatch.js'
     ],
     optimizerStartFile = 'build/build.js',
     libText = '';
